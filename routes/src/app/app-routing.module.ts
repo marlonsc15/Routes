@@ -9,12 +9,13 @@ const routes: Routes = [
   { path: 'sobre', component: SobreComponent, children: [
     { path: 'marlon', component: SobreComponent }
   ]},
+  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard-routing.module').then(m => m.DashboardRoutingModule)},
   { path: '404', component: PageErrorComponent },
   { path: '**', redirectTo: '404' }
 ];
  
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
